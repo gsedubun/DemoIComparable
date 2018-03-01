@@ -19,7 +19,11 @@ namespace DemoIComparable
             Console.WriteLine("Hello World!");
 
             List<Schedule> list = new List<Schedule>
-            {
+            {new Schedule
+                {
+                    Shift = shift2,
+                    WorkDay= workday1
+                },
                 new Schedule
                 {
                     Shift = shift1,
@@ -35,11 +39,7 @@ namespace DemoIComparable
                     Shift = shift1,
                     WorkDay= workday2
                 },
-                new Schedule
-                {
-                    Shift = shift2,
-                    WorkDay= workday1
-                },
+                
                 new Schedule
                 {
                     Shift = shift1,
@@ -74,16 +74,8 @@ namespace DemoIComparable
         public int CompareTo(Schedule other)
         {
             int result = 0;
-            if (WorkDay.Day < other.WorkDay.Day)
-            {
-                result = -2;
-            }
-            else if (WorkDay.Day > other.WorkDay.Day)
-            {
-                result = 2;
-            }
+            result += WorkDay.CompareTo(other.WorkDay);
             result += Shift.CompareTo(other.Shift);
-
             return result;
         }
 
@@ -99,9 +91,9 @@ namespace DemoIComparable
         public int CompareTo(WorkDay other)
         {
             if (Day > other.Day)
-                return 1;
+                return 2;
             else if(Day<other.Day)
-                return -1;
+                return -2;
             return 0;
         }
     }
