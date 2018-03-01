@@ -98,10 +98,11 @@ namespace DemoIComparable
 
         public int CompareTo(WorkDay other)
         {
-            if (Day >= other.Day)
+            if (Day > other.Day)
                 return 1;
-            else
+            else if(Day<other.Day)
                 return -1;
+            return 0;
         }
     }
 
@@ -113,10 +114,11 @@ namespace DemoIComparable
 
         public int CompareTo(Shift other)
         {
-            if (Start >= other.Start)
+            if (Start > other.Start)
                 return 1;
-            else
+            else if(Start< other.Start)
                 return -1;
+            return 0;
         }
     }
 
